@@ -15,8 +15,8 @@ permissions:
   # TODO#0b: add permission so Gitleaks/Sonar can comment on PRs + issues
   # TODO#0c: add permission for OIDC token (id-token)
   id-token: write
-  issues: white
-  pull-requests: white
+  issues: write
+  pull-requests: write
   security-events: write  # required to upload SARIF to GitHub Security tab
   actions: read
 
@@ -139,7 +139,7 @@ jobs:
 
             # TODO#10: set up Node 20 using actions/setup-node@v4
             - name: Set up Node 20
-              uses: action/setup-node@v4
+              uses: actions/setup-node@v4
               with: 
                 node-version: '20'
             # TODO#11: install npm deps so Dependency-Check can resolve full tree
@@ -213,8 +213,7 @@ jobs:
                 # ignore-unfixed: ???
                 ignore-unfixed: true
             
-            - name: Upload Trivy SARIF to Security tab
-              uses: github/codeql-action/upload-sarif@v3
+           
 
             - name: Upload Trivy SARIF to Security tab
               uses: github/codeql-action/upload-sarif@v3
